@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import InfiniteScroll from "react-infinite-scroll-component";
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 import ConcernList from '../components/concernList';
 import Database from '../services/database';
 import FadeLoader from "react-spinners/FadeLoader";
