@@ -17,11 +17,30 @@ export function MyConcerns({ userData }) {
             if (userData) {
                 const userConcerns = await Database.getUserConcerns(userData.uid);
                 setConcerns(userConcerns);
+                setDisplayedConcerns(userConcerns.slice(0, ITEMS_PER_PAGE));
+                setHasMore(userConcerns.length > ITEMS_PER_PAGE); // Set `hasMore` initially
             }
         }
         fetchUserConcerns();
     }, [userData]);
 
+    const fetchMoreData = () => {
+        const currentLength = displayedConcerns.length;
+
+        if (currentLength >= concerns.length) {
+            setHasMore(false);
+            return;
+        }
+
+        const nextBatch = concerns.slice(currentLength, currentLength + ITEMS_PER_PAGE);
+        setTimeout(() => {
+            setDisplayedConcerns(prev => [...prev, ...nextBatch]);
+            // Update `hasMore` if we've loaded all items
+            if (currentLength + nextBatch.length >= concerns.length) {
+                setHasMore(false);
+            }
+        }, 500); // Simulating API delay
+    };
 
     return (
         <div className="min-h-screen flex flex-col">
