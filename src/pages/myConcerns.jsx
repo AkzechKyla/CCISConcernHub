@@ -46,7 +46,21 @@ export function MyConcerns({ userData }) {
         <div className="min-h-screen flex flex-col">
             <div className="flex-grow p-4 mx-14">
                 <h2 className="text-3xl font-bold mb-8 text-blue-400">My Concerns</h2>
-                <ConcernList concerns={concerns}/>
+                <div id="scrollableDiv" style={{ height: '70vh', overflow: 'auto' }}>
+                    <InfiniteScroll
+                        dataLength={displayedConcerns.length}
+                        next={fetchMoreData}
+                        hasMore={hasMore}
+                        loader={
+                            <div className="flex justify-center items-center h-full" style={{ transform: 'scale(0.5)' }}>
+                                    <FadeLoader color="#bdbdbd" height={15} />
+                            </div>
+                        }
+                        scrollableTarget="scrollableDiv"
+                    >
+                        <ConcernList concerns={displayedConcerns} />
+                    </InfiniteScroll>
+                </div>
             </div>
             <Footer />
         </div>
