@@ -7,6 +7,10 @@ import FadeLoader from "react-spinners/FadeLoader";
 
 export function MyConcerns({ userData }) {
     const [concerns, setConcerns] = useState([]);
+    const [displayedConcerns, setDisplayedConcerns] = useState([]);
+    const [hasMore, setHasMore] = useState(true);
+
+    const ITEMS_PER_PAGE = 10;
 
     useEffect(() => {
         async function fetchUserConcerns() {
