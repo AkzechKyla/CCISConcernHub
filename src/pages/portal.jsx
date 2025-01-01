@@ -1,4 +1,4 @@
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 import { useNavigate } from 'react-router-dom';
 import backgroundImage from '../assets/background.jpg';
 

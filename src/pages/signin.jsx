@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 import backgroundImage from '../assets/background.jpg';
 import ClientUser from '../auth/clientUser';
 import outlookLogo from '../assets/outlook-logo.png';

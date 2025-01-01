@@ -1,4 +1,4 @@
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 import { useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 import { FaArrowLeft } from 'react-icons/fa';

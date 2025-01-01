@@ -1,4 +1,4 @@
-import Footer from '../components/Footer';
+import Footer from '../components/footer';
 import ConcernList from '../components/concernList';
 import DashboardStats from '../components/dashboardStats';
 
