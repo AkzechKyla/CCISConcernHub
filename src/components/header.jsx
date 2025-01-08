@@ -47,20 +47,20 @@ export default function Header({ userData, isSolid }) {
                         <div className="flex space-x-14">
                             <a
                                 onClick={() => navigate("/submit-concern")}
-                                className={`${textWhite ? 'text-white' : 'text-gray-700'} hover:text-gray-900`}
+                                className={`${textWhite ? 'text-white' : 'text-gray-700'} hover:text-gray-500 cursor-pointer`}
                             >
                                 Submit Concern
                             </a>
                             <a
                                 onClick={() => navigate("/my-concerns")}
-                                className={`${textWhite ? 'text-white' : 'text-gray-700'} hover:text-gray-900`}
+                                className={`${textWhite ? 'text-white' : 'text-gray-700'} hover:text-gray-500 cursor-pointer`}
                             >
                                 My Concerns
                             </a>
 
                             { userData.isAdmin() && <a
                                 onClick={() => navigate("/admin-dashboard")}
-                                className={`${textWhite ? 'text-white' : 'text-gray-700'} hover:text-gray-900`}
+                                className={`${textWhite ? 'text-white' : 'text-gray-700'} hover:text-gray-500 cursor-pointer`}
                             >
                                 Manage Concerns
                             </a>}
@@ -68,7 +68,7 @@ export default function Header({ userData, isSolid }) {
                                 onClick={() => {
                                     ClientUser.signOut();
                                 }}
-                                className={`${textWhite ? 'text-white' : 'text-gray-700'} hover:text-gray-900 cursor-pointer`}
+                                className={`${textWhite ? 'text-white' : 'text-gray-700'} hover:text-gray-500 cursor-pointer`}
                             >
                                 Sign Out
                             </div>
