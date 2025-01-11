@@ -120,6 +120,8 @@ export function SubmitConcern({ userData }) {
 
     const handleFileUpload = (e) => {
         const files = Array.from(e.target.files || e.dataTransfer.files);
+
+        // instead na hard code, dynamic na yung max file count at max file size (maxFilecount)
         const maxFileCount = 5;
         const maxFileSize = 25 * 1024 * 1024; // 25 MB in bytes
         const allowedFileTypes = [
