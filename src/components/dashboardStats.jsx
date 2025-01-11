@@ -1,14 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback  } from 'react';
 
-export function DashboardStats({ metrics }) {
+export function DashboardStats({ concerns }) {
     const [dateRange, setDateRange] = useState('current-month');
     const [issueType, setIssueType] = useState('all');
     const [department, setDepartment] = useState('all');
     const [category, setCategory] = useState('all');
-
-    const handleFilterChange = () => {
-        console.log("Filters applied:", { dateRange, issueType, department, category });
-    };
 
     // Define status colors
     const statusColors = {
@@ -19,6 +15,47 @@ export function DashboardStats({ metrics }) {
         unresolved: 'bg-gray-300',
         totalConcerns: 'bg-gray-600',
     };
+
+    // sa dashboardstats, concerns ang pinasa para makuha yung number ng concerns
+    const calculateMetrics = useCallback(() => {
+        if (!concerns || concerns.length === 0) {
+            return {
+                open: 0,
+                inProgress: 0,
+                onHold: 0,
+                resolved: 0,
+                unresolved: 0,
+                totalConcerns: 0,
+            };
+        }
+
+        let filteredConcerns = concerns;
+
+        // Apply filters
+        if (issueType !== 'all') {
+            filteredConcerns = filteredConcerns.filter(
+                (concern) => concern.issueType?.toLowerCase() === issueType.toLowerCase()
+            );
+        }
+
+        if (category !== 'all') {
+            filteredConcerns = filteredConcerns.filter(
+                (concern) => concern.category?.toLowerCase() === category.toLowerCase()
+            );
+        }
+
+        // Calculate metrics based on status
+        return {
+            open: filteredConcerns.filter((concern) => concern.status?.toLowerCase() === 'open').length,
+            inProgress: filteredConcerns.filter((concern) => concern.status?.toLowerCase() === 'inprogress').length,
+            onHold: filteredConcerns.filter((concern) => concern.status?.toLowerCase() === 'onhold').length,
+            resolved: filteredConcerns.filter((concern) => concern.status?.toLowerCase() === 'resolved').length,
+            unresolved: filteredConcerns.filter((concern) => concern.status?.toLowerCase() === 'unresolved').length,
+            totalConcerns: filteredConcerns.length,
+        };
+    }, [concerns, issueType, category]);
+
+    const metrics = calculateMetrics();
 
     return (
         <div className="rounded-lg p-4 mb-4">
@@ -86,10 +123,7 @@ export function DashboardStats({ metrics }) {
                 {Object.entries(metrics).map(([status, count], index) => (
                     <div
                         key={status}
-                        className={`flex items-center space-x-2 p-3 ${
-                            index !== 0 ? 'border-l-2 border-gray-300' : ''
-                        }`}
-                    >
+                        className={`flex items-center space-x-2 p-3 ${index !== 0 ? 'border-l-2 border-gray-300' : ''}`}                    >
                         <span
                             className={`inline-block w-10 h-10 rounded-full ${statusColors[status] || 'bg-gray-400'}`}
                         ></span>
