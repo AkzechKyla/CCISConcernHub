@@ -28,7 +28,6 @@ export function AdminDashboard({ userData }) {
         <div>
             <main className="container mx-auto p-4">
                 <h2 className="text-2xl font-semibold mt-2 text-blue-400">Concern Overview</h2>
-                {/* imbis na metrics ang pinasa sa dashboard, concerns na para makuha yung number (calculated*/}
                 <DashboardStats concerns={concerns} />
                 <h2 className="text-xl font-semibold mt-6 text-blue-400">Manage Concerns</h2>
                 {concerns === undefined ? (
