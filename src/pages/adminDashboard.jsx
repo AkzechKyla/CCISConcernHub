@@ -12,7 +12,6 @@ export function AdminDashboard({ userData }) {
     const fetchCategoryConcerns = useCallback(async () => {
         if (userData) {
             const categoryConcerns = await Database.getCategoryConcerns(userData.assignedCategories, pagination.current);
-//removed undefined 
             if (!concerns) {
                 setConcerns(categoryConcerns);
             } else {
@@ -24,18 +23,6 @@ export function AdminDashboard({ userData }) {
     useEffect(() => {
         fetchCategoryConcerns();
     }, [fetchCategoryConcerns]);
-
-
-    //removedd dummy metrics data
-    //  // Dummy metrics data
-    //  const metricsData = {
-    //     open: 5,
-    //     inProgress: 3,
-    //     onHold: 2,
-    //     resolved: 10,
-    //     unresolved: 1,
-    //     totalConcerns: 21,
-    // };
 
     return (
         <div>
