@@ -41,6 +41,3 @@ export function MyConcerns({ userData }) {
 }
 
 export default MyConcerns; 
-
-
-//userdata was change to concerns in the dashboardstats component

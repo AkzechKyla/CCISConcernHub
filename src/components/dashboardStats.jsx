@@ -16,7 +16,7 @@ export function DashboardStats({ concerns }) {
         totalConcerns: 'bg-gray-600',
     };
 
-    // sa dashboardstats, concerns ang pinasa para makuha yung number ng concerns
+
     const calculateMetrics = useCallback(() => {
         if (!concerns || concerns.length === 0) {
             return {
@@ -123,7 +123,10 @@ export function DashboardStats({ concerns }) {
                 {Object.entries(metrics).map(([status, count], index) => (
                     <div
                         key={status}
-                        className={`flex items-center space-x-2 p-3 ${index !== 0 ? 'border-l-2 border-gray-300' : ''}`}                    >
+                        className={`flex items-center space-x-2 p-3 ${
+                            index !== 0 ? 'border-l-2 border-gray-300' : ''
+                        }`}
+                        >
                         <span
                             className={`inline-block w-10 h-10 rounded-full ${statusColors[status] || 'bg-gray-400'}`}
                         ></span>
