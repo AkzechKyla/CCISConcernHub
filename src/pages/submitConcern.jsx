@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Footer from '../components/footer';
-import iconImage from '../assets/whats-next.png';
+import iconImage from '../../public/assets/whats-next.png';
 import { useNavigate } from 'react-router-dom';
 import BackArrow from '../components/backArrow';
 import Concern from '../models/concern';

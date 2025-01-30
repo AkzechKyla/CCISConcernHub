@@ -1,6 +1,6 @@
 import Footer from '../components/footer';
 import { useNavigate } from 'react-router-dom';
-import backgroundImage from '../assets/background.jpg';
+import backgroundImage from '../../public/assets/background.jpg';
 
 export function Portal() {
     const navigate = useNavigate();

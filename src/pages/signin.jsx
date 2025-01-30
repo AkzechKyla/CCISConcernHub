@@ -1,8 +1,8 @@
 import { useNavigate } from "react-router-dom";
 import Footer from '../components/footer';
-import backgroundImage from '../assets/background.jpg';
+import backgroundImage from '../../public/assets/background.jpg';
 import ClientUser from '../auth/clientUser';
-import outlookLogo from '../assets/outlook-logo.png';
+import outlookLogo from '../../public/assets/outlook-logo.png';
 
 async function navigateBasedOnRole(clientUser, navigate) {
     const userData = await clientUser.getUserFromDatabase();
