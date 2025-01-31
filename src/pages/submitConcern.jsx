@@ -118,11 +118,38 @@ export function SubmitConcern({ userData }) {
 
     const handleFileUpload = (e) => {
         const files = Array.from(e.target.files || e.dataTransfer.files);
+        const maxFileCount = 5;
+        const maxFileSize = 25 * 1024 * 1024; // 25 MB in bytes
+        const allowedFileTypes = [
+            "image/jpeg",
+            "image/jpg",
+            "image/png",
+            "application/pdf",
+            "application/msword",
+            "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+            "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+            "application/vnd.ms-excel",
+            "text/csv",
+        ];
 
         // Check if the number of files exceeds the limit
-        if (uploadedFiles.length + files.length > 5) {
+        if (uploadedFiles.length + files.length > maxFileCount) {
             showErrorToast("You can only upload a maximum of 5 files.");
             return;
+        }
+
+        // Validate files
+        const validFiles = [];
+        for (const file of files) {
+            if (!allowedFileTypes.includes(file.type)) {
+                alert(`File type not allowed: ${file.name}`);
+                return;
+            }
+            if (file.size > maxFileSize) {
+                alert(`File size exceeds 25 MB: ${file.name}`);
+                return;
+            }
+            validFiles.push(file);
         }
 
         // Map files to an array of file objects
