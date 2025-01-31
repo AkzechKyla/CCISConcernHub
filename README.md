@@ -1,8 +1,37 @@
-## Prerequisites
-- Node.js
-- NPM
-- Firebase CLI
-## Project Setup
+# CCIS Concern Hub: A Student Concern Management System
+
+The **CCIS Concern Hub** is a web-based student concern management system developed for the College of Computer and Information Sciences (CCIS) at the Polytechnic University of the Philippines (PUP). This platform enables students to submit academic concerns, complaints, and requests in a structured and private environment while allowing administrators to efficiently manage and resolve concerns.
+
+## 🚀 Features
+- **User Authentication:** Sign in using PUP webmail with Firebase Authentication
+- **Student Workspace:** Submit, track, and manage concerns.
+- **Admin Workspace:** View, filter, and manage student concerns.
+- **Discussion Thread:** Engage in direct communication between students and admins for concern resolution.
+
+## 📸 Screenshots  
+
+- **User Sign-in Page**  
+  ![User Sign-in](public/images/user-sign-in.png)  
+
+- **Student Workspace**  
+  ![Student Workspace](public/images/student-workspace.png)  
+
+- **Submit a Concern**  
+  ![Submit Concern](public/images/submit-concern.png)  
+
+- **View Concern and Discussion Thread**  
+  ![View Concern](public/images/view-concern.png)  
+
+- **Admin Workspace**  
+  ![Admin Workspace](public/images/admin-workspace.png)  
+
+## 🛠️ Prerequisites
+Make sure you have the following installed:
+- **Node.js**
+- **NPM**
+- **Firebase CLI**
+
+## ⚙️ Project Setup
 1. Clone the repository to your local machine:
 ```bash
 git clone git@github.com:AkzechKyla/CCISConcernHub.git
@@ -30,9 +59,35 @@ const firebaseConfig = {
 
 export default firebaseConfig;
 ```
-## Running the Project
+## 🏃 Running the Project
 1. Start the development server:
 ```bash
 npm run dev
 ```
-2. Open your web browser and copy-paste the local host url (or click if provided by the terminal)
+2. Open your web browser and navigate to the local server URL provided by the terminal (typically http://localhost:3000).
+
+## 🧑‍💻 Technology Stack
+
+### Frontend
+- HTML  
+- Tailwind CSS  
+- JavaScript  
+- React.js  
+
+### Backend
+- Firebase  
+  - Firebase Authentication  
+  - Firebase Firestore (for storing concerns)  
+  - Firebase Realtime Database (for discussion threads)  
+  - Firebase Storage  
+  - Firebase Cloud Functions  
+
+## 📄 Contributors
+- **Legaspi, John Lloyd S.**  
+- **Morcillos, Kyla Franchezka L.**  
+- **Quijano, Katherine P.**  
+- **Valoria, Kyla Mae N.**
+
+## 📝 Acknowledgments
+This project is submitted in partial fulfillment of the requirements for the course **COMP 019: Applications Development and Emerging Technologies** at the **Polytechnic University of the Philippines**.
+
