@@ -1,5 +1,5 @@
-import pupLogo from '../../public/assets/pup-logo.png';
-import ccisLogo from '../../public/assets/ccis-logo.png';
+import pupLogo from '../assets/pup-logo.png';
+import ccisLogo from '../assets/ccis-logo.png';
 import ClientUser from '../auth/clientUser';
 import { useNavigate } from "react-router-dom";
 
