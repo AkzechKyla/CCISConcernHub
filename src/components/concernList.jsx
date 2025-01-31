@@ -203,7 +203,9 @@ export function ConcernList({ userData, concernsFilter }) {
                         className="text-gray-600 border-gray-300 grid text-xs sticky top-0 bg-white z-10"
                         style={{
                             display: 'grid',
-                            gridTemplateColumns: '2.5fr 2.5fr 4fr 4fr 2.5fr 2.5fr 2fr',
+                            gridTemplateColumns: userData?.isAdmin()
+                            ? '2.5fr 2.5fr 4fr 4fr 2.5fr 2.5fr 2fr'
+                            : '2fr 2fr 2fr 2fr 2fr',
                             alignItems: 'center',
                         }}
                     >
@@ -273,7 +275,9 @@ export function ConcernList({ userData, concernsFilter }) {
                                     className="text-gray-700 border border-gray-300 mb-2 grid text-sm rounded-md hover:shadow hover:bg-gray-100"
                                     style={{
                                         display: 'grid',
-                                        gridTemplateColumns: '2.5fr 2.5fr 4fr 4fr 2.5fr 2.5fr 2fr',
+                                        gridTemplateColumns: userData?.isAdmin()
+                                        ? '2.5fr 2.5fr 4fr 4fr 2.5fr 2.5fr 2fr'
+                                        : '2fr 2fr 2fr 2fr 2fr',
                                         alignItems: 'center',
                                     }}
                                 >
@@ -295,17 +299,19 @@ export function ConcernList({ userData, concernsFilter }) {
                                         <StatusBadge status={concern.status} />
                                     </div>
                                     <div className="py-2 px-4">{concern.dateSubmitted.toLocaleDateString()}</div>
-                                    <div className="py-2 px-2 relative">
-                                        <span
-                                            onClick={(e) => {
-                                                e.preventDefault();
-                                                handleCopyToClipboard(concern.uid);
-                                            }}
-                                            className="text-blue-500 hover:text-blue-700 cursor-pointer ml-7"
-                                        >
-                                            Copy ID
-                                        </span>
-                                    </div>
+                                    {userData.isAdmin() && (
+                                        <div className="py-2 px-2 relative">
+                                            <span
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+                                                    handleCopyToClipboard(concern.uid);
+                                                }}
+                                                className="text-blue-500 hover:text-blue-700 cursor-pointer ml-7"
+                                            >
+                                                Copy ID
+                                            </span>
+                                        </div>
+                                    )}
                                 </Link>
                             ))}
 

@@ -19,6 +19,10 @@ exports.closeInactiveConcerns = onSchedule("every 24 hours", async () => {
     const batch = db.batch();
     concernsSnapshot.forEach((doc) => {
         batch.update(doc.ref, { status: "Closed" });
+
+        if (doc.data().hasBeenResolvedByAdmin == true) {
+            batch.update(doc.ref, { isResolved: true });
+        }
     });
 
     await batch.commit();

@@ -16,8 +16,8 @@ export function ViewConcern({ userData }) {
     const [isAssigned, _setIsAssigned] = useState(false);
 
     function setStatus(newStatus) {
-        if (newStatus === "Open" && status === "In Progress") {
-            alert("Concern cannot be set to Open once In Progress status.");
+        if (newStatus === "Open" && status != "Open") {
+            showErrorToast(`Concern cannot be set to Open once ${status} status.`);
             return;
         }
 
