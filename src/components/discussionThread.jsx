@@ -30,7 +30,6 @@ export default function DiscussionThread({ userData, concern, status, setStatus 
     const handleSendMessage = async () => {
         if (!concern.hasDiscussion) {
             concern.setHasDiscussion(true);
-            concern.saveToDatabase();
         }
 
         if (newMessage.trim()) {
@@ -56,6 +55,12 @@ export default function DiscussionThread({ userData, concern, status, setStatus 
         if (userData.isAdmin() && status === "Open") {
             setStatus("In Progress");
         }
+
+        if (userData.isAdmin() && !concern.isAdminAssigned(userData)) {
+            concern.assignAdmin(userData);
+        }
+
+        concern.saveToDatabase();
     };
 
     const adjustHeight = () => {
