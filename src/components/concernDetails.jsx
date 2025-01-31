@@ -34,6 +34,7 @@ const ConcernDetails = ({ concern, concernCreator, userData, status, setStatus, 
         }
 
         setIsSpam(false);
+        concern.setIsSpam(false);
 
         if (!concern.isAdminAssigned(userData) && userData.isAdmin()) {
             setIsAssigned(true);
