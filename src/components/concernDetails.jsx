@@ -36,12 +36,22 @@ const ConcernDetails = ({ concern, concernCreator, userData, status, setStatus, 
         setIsSpam(false);
         concern.setIsSpam(false);
 
+        // Admin may have already closed the concern, but forgets to mark it as resolved.
+        if (concern.status === 'Closed') {
+            if (concern.hasBeenResolvedByCreator === true) {
+                showSuccessToast('Concern is already marked as resolved');
+                return;
+            }
+
+            concern.updateStatus('In Progress');
+            setStatus('In Progress');
+        }
+
         if (!concern.isAdminAssigned(userData) && userData.isAdmin()) {
             setIsAssigned(true);
         }
 
         concern.saveToDatabase();
-
     };
 
     const handleMarkAsSpam = () => {
@@ -54,7 +64,7 @@ const ConcernDetails = ({ concern, concernCreator, userData, status, setStatus, 
         setIsSpam(true);
         setStatus('Closed');
 
-        concern.setAsResolved(false);
+        concern.setAsResolved('Closed', concernCreator, userData);
         concern.setIsSpam(true);
         concern.updateStatus('Closed');
 
