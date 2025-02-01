@@ -3,7 +3,7 @@ rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
     function emailIsPUP() {
-      return request.auth.token.email.matches('.*@iskolarngbayan.pup.edu.ph');
+      return request.auth.token.email.matches('.*.pup.edu.ph');
     }
 
     function isAdmin() {

@@ -6,7 +6,7 @@ rules_version = '2';
 service firebase.storage {
   match /b/{bucket}/o {
     function emailIsPUP() {
-      return request.auth.token.email.matches('.*@iskolarngbayan.pup.edu.ph');
+      return request.auth.token.email.matches('.*.pup.edu.ph');
     }
 
     match /{allPaths=**} {
